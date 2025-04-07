@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Log In</title>
+  <link href="style.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+  <div class="container">
+    <img class="logo" src="logo.png" alt="serenity" />
+    <button class="switch" onclick="redirectToSignup()">Sign Up</button>
+  </div>
+
+  <div class="section">
+    <center>
+      <h1 class="introtext">Log Into Your Account</h1>
+    </center>
+
+    <center>
+      <div class="input">
+        <h3 class="inputtext">Username</h3>
+        <input type="text" class="textinput" id="username" name="username" autocomplete="off">
+        <br><br>
+        <h3 class="inputtext">Password</h3>
+        <input type="password" class="textinput" id="password" name="password" autocomplete="off">
+        <br><br>
+        <p id="errtext"></p>
+        <button class="next" id="next" onclick="login()">Enter</button>
+      </div>
+    </center>
+  </div>
+
+  <script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-app-compat.js" defer></script>
+  <script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-firestore-compat.js" defer></script>
+
+  <script src="dbinterface.js" defer></script>
+
+  <script src="login.js" defer></script>
+</body>
+
+</html>

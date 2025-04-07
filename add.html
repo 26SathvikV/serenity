@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Serenity: Add a New Task</title>
+  <link href="style.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+  <div class="container">
+    <img class="logo" src="logo.png" alt="serenity" />
+    <button class="switch" onclick="returnToHome()">Return to Home</button>
+  </div>
+
+  <div class="section">
+    <center>
+      <h2 class="introtext" id="directions">Choose Which to Add</h2>
+    </center>
+  </div>
+
+  <div style="justify-content: center; align-items: center;">
+    <div id="0" style="visibility: hidden;">
+      <center>
+        <div>
+          <button class="nextLeft" onclick="setStage(3)">Group</button>
+          <button class="nextRight" onclick="setStage(1)">Task Session</button>
+        </div>
+      </center>
+    </div>
+
+    <div id="1" style="visibility: hidden; margin: -50px;">
+      <center>
+        <h3 class="inputtext">Name</h3>
+        <input type="text" class="textinput" id="name" name="name" onkeyup="changeName()" autocomplete="off">
+
+        <br><br>
+
+        <h3 class="inputtext">Time</h3> <br>
+        <div class="input-container" style="width:30%;">
+          <div class="input-section">
+            <input type="date" class="timeinput" id="date" name="date" onchange="changeDate()" autocomplete="off">
+          </div>
+          <div class="input-section">
+            <input type="time" class="timeinput" id="time" name="time" onchange="changeTime()" autocomplete="off">
+          </div>
+        </div>
+      </center>
+
+      <br><br>
+
+      <center>
+        <h3 class="inputtext">Group</h3>
+        <div class="dropdown">
+          <center>
+            <input type="text" id="group" class="textinput" onclick="showDropdown()" onkeyup="filterFunction()"
+              autocomplete="off">
+            <div id="groupDropdn" class="dropdown-content"> </div>
+          </center>
+        </div>
+
+        <br><br>
+
+        <p id="errtext"></p>
+
+        <button class="next" id="next" onclick="continueTaskSession()">Enter</button>
+      </center>
+
+    </div>
+
+    <div id="2" style="visibility: hidden; margin: -450px;">
+      <center>
+        <h3 class="inputtext">Name</h3>
+        <input type="text" class="textinput" id="taskName" name="taskName" onkeyup="changeTaskName()"
+          autocomplete="off">
+
+        <br><br>
+
+        <p id="errtext"></p>
+
+        <button class="next" id="next" onclick="continueTaskCreation()">Add New Task</button>
+        <button class="go" id="next" onclick="finishTaskSession()">Finish</button>
+      </center>
+    </div>
+
+    <div id="3" style="visibility: hidden; margin: 250px;">
+      <center>
+        <h3 class="inputtext">Name</h3>
+        <input type="text" class="textinput" id="groupName" name="groupName" onkeyup="changeGroupName()"
+          autocomplete="off">
+        <br><br>
+
+        <h3 class="inputtext">Color</h3>
+        <input type="color" class="colorinput" id="color" name="color" onchange="changeColor()" autocomplete="off">
+        <br><br>
+
+        <p id="errGroupText"></p>
+
+        <button class="go" id="next" onclick="addGroup()">Submit</button>
+      </center>
+    </div>
+
+    <div id="4" style="visibility: hidden; margin: -550px;">
+      <center>
+        <h3 class="inputtext">Name</h3>
+        <input type="text" class="textinput" id="taskGroupName" name="taskGroupName" onkeyup="changeTaskGroupName()"
+          autocomplete="off">
+        <br><br>
+
+        <h3 class="inputtext">Color</h3>
+        <input type="color" class="colorinput" id="taskGroupColor" name="taskGroupColor"
+          onchange="changeTaskGroupColor()" autocomplete="off">
+        <br><br>
+
+        <p id="errTaskGroupText"></p>
+
+        <button class="next" id="next" onclick="addTaskGroup()">Submit</button>
+      </center>
+    </div>
+  </div>
+
+
+  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-app-compat.js" defer></script>
+  <script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-firestore-compat.js" defer></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+  <script src="dbinterface.js" defer></script>
+  <script src="add.js" defer></script>
+</body>
+
+</html>

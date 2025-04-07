@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Serenity: Work</title>
+  <link href="style.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+  <div class="container">
+    <img class="logo" src="logo.png" alt="serenity" />
+    <button class="switch" id="return" onclick="goToHome()">Return to Home</button>
+  </div>
+
+
+  <center>
+    <div id="0" style="visibility: hidden;">
+      <h1 class="inputtext">How do you want to do the tasks?</h3>
+        <br>
+        <button class="next" id="next" onclick="setStage(5)">Consistent</button>
+        <button class="next" id="next" onclick="setStage(6)">Task-Based</button>
+    </div>
+
+    <div id="1" style="visibility: hidden; margin-top: -153px;">
+      <h1 class="inputtext">Get Ready</h3>
+        <br>
+        <h3 class="inputtext">Organize Your Thoughts, Grab Some Tea, etc.</h3>
+      <button class="next" id="next" onclick="goToSpotify()">Go to Spotify</button>
+        <button class="bottomRight" id="next" onclick="begin()">Enter</button>
+    </div>
+
+    <div id="2" style="visibility: hidden; margin-top: 75px;">
+      <p>Work Time</p>
+    </div>
+
+    <div id="3" style="visibility: hidden; margin-top: -300px;">
+      <div class="workContainer">
+        <div class="bigSection">
+          <h1>Take a Break!</h1>
+          <h2 id="timeLeft"></h2>
+        </div>
+        <div class="sectionRight">
+          <div class="workSectionColumnColor">
+            <div class="workTaskHeader">
+              <h2>Tasks</h2>
+            </div>
+            <div id="tasksRemaining" class="vertical-menu">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="4" style="visibility: hidden; margin-top: -100px;">
+      <h1 class="inputtext">GOOD JOB!</h3>
+        <br>
+        <h3 class="inputtext">You completed all your tasks!</h3>
+        <button class="bottomRight" id="next" onclick="finish()">Go to Home</button>
+    </div>
+
+    <div id="5" style="visibility: hidden; margin-top: -350px;">
+      <h1 class="inputtext">Set the Time</h3>
+        <br>
+        <h3 class="inputtext">Work Time</h3>
+        <div class="centerContainer">
+          <input type="number" class="smallNumInput" id="consistentWork" name="consistentWork" autocomplete="off">
+          <p style="margin-left: 10px;">min</p>
+        </div>
+        <br><br>
+
+        <h3 class="inputtext">Break Time</h3>
+        <div class="centerContainer">
+          <input type="number" class="smallNumInput" id="consistentBreak" name="consistentBreak" autocomplete="off">
+          <p style="margin-left: 10px;">min</p>
+        </div>
+
+        <br>
+        <p id="consistentErrText"></p>
+
+        <br>
+        <button class="bottomRight" id="next" onclick="setupConsistent()">Go</button>
+    </div>
+
+    <div id="6" style="visibility: hidden; margin-top: -450px;">
+      <h1 class="inputtext">Set the Break Time</h3>
+        <br>
+
+        <h3 class="inputtext">Break Time</h3>
+        <div class="centerContainer">
+          <input type="number" class="smallNumInput" id="taskBasedBreak" name="taskBasedBreak" autocomplete="off">
+          <p style="margin-left: 10px;">min</p>
+        </div>
+
+        <br>
+        <p id="taskBasedBreakErrText"></p>
+
+        <br>
+        <button class="bottomRight" id="next" onclick="startSetupTaskBased()">Next</button>
+    </div>
+
+    <div id="7" style="visibility: hidden; margin-top: -325px;">
+      <h1 class="inputtext">Set the Task Times</h3>
+        <br>
+
+        <div style="display: flex; justify-content: center; flex-direction: column; align-items: center;"
+          id="taskBasedDropdown">
+        </div>
+
+        <br>
+        <p id="taskBasedTaskErrText"></p>
+
+        <br>
+        <button class="bottomRight" id="next" onclick="endSetupTaskBased()">Go</button>
+    </div>
+  </center>
+
+
+
+  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-app-compat.js" defer></script>
+  <script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-firestore-compat.js" defer></script>
+
+  <script src="dbinterface.js" defer></script>
+  <script src="work.js"></script>
+</body>
+
+</html>

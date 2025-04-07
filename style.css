@@ -1,0 +1,695 @@
+@font-face {
+  font-family: 'OpenSans';
+  src: url('OpenSans-Light.ttf') format('truetype');
+}
+
+body {
+  font-family: 'OpenSans', sans-serif;
+}
+
+h1,
+p {
+  font-family: 'OpenSans', sans-serif;
+}
+
+:root {
+  --logo-size: 10%;
+  --button-width: 5%;
+  --button-height: 40px;
+  --max-logo-width: 1800px;
+  --max-button-width: 120px;
+}
+
+html {
+  height: 100%;
+  width: 100%;
+  background: linear-gradient(0deg, rgba(0, 0, 0, 1) 0%, rgba(108, 63, 108, 1) 45%, rgba(137, 80, 137, 1) 70%, rgba(200, 116, 200, 1) 100%);
+}
+
+body {
+  margin: 0;
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #ee77e4;
+  border-radius: 25px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #eb60e0;
+  border-radius: 25px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #e949db;
+  border-radius: 25px;
+}
+
+.dropbtn {
+  background-color: #04AA6D;
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+}
+
+.dropbtn:hover,
+.dropbtn:focus {
+  background-color: #3e8e41;
+}
+
+#group {
+  min-width: 250px;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #c17bc1;
+  min-width: 250px;
+  overflow: auto;
+  /*border: 1px solid #ddd;*/
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown a:hover {
+  background-color: #c37fc3;
+  cursor: pointer;
+}
+
+.show {
+  display: block;
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.centerContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.taskBasedCenterContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-width: 200px;
+  max-width: 200px;
+  margin: 0 auto;
+}
+
+.taskBasedTaskContainer {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  flex-wrap: nowrap;
+}
+
+.taskBasedInput {
+  min-width: 100px;
+  max-width: 100px;
+}
+
+.workContainer {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.section {
+  flex: 1;
+  margin: 2%;
+  align-self: flex-start;
+}
+
+.bigSection {
+  flex: 4;
+  margin: 2%;
+}
+
+.sectionRight {
+  flex: 1;
+  margin: 2%;
+}
+
+.sectionColumn {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  margin: 2%;
+  align-items: center;
+}
+
+.sectionRow {
+  display: flex;
+  flex-direction: row;
+  flex: 1;
+  margin: 2%;
+  align-items: center;
+}
+
+.sectionColor {
+  flex: 1;
+  margin: 2%;
+  border-radius: 15px;
+  background-color: #ee77e4;
+}
+
+.sectionColumnColor {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  margin: 2%;
+  border-radius: 15px;
+  max-width: 50%;
+  background-color: #ee77e4;
+}
+
+.workSectionColumnColor {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  margin: 2%;
+  border-radius: 15px;
+  max-width: 100%;
+  background-color: #ee77e4;
+}
+
+.menu {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.rightmenu {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  flex: 1;
+}
+
+.menuoption {
+  cursor: pointer;
+  font-family: 'OpenSans', sans-serif;
+  font-size: 25px;
+  padding: 5px 15px;
+  border: 2px solid black;
+  border-radius: 10px;
+  color: black;
+  background-color: transparent;
+  transition: background-color 0.3s;
+  margin: 0% 1% 0% 0%;
+}
+
+.workTaskContainer {
+  display: flex;
+  flex-direction: row;
+  margin: 10%;
+  align-items: center;
+  width: 60%;
+}
+
+.workTaskContainer input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.workTaskCheck {
+  height: 15px;
+  width: 15px;
+  background-color: #ffffff;
+  border-radius: 50%;
+}
+
+.workTaskContainer:hover input~.workTaskCheck {
+  background-color: #ccc;
+}
+
+.workTaskContainer:hover {
+  cursor: pointer;
+}
+
+.workTaskContainer:hover .workTask {
+  text-decoration: line-through;
+}
+
+.workTaskContainer input:checked~.workTaskCheck {
+  background-color: #a256c2;
+}
+
+.workTaskCheck:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+.workTaskContainer input:checked~.workTaskCheck:after {
+  display: block;
+}
+
+.vertical-menu {
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+}
+
+.vertical-menu a {
+  background-color: #eee;
+  color: black;
+  display: block;
+  padding: 12px;
+  text-decoration: none;
+}
+
+.vertical-menu a:hover {
+  background-color: #ccc;
+}
+
+.vertical-menu a.active {
+  background-color: #04AA6D;
+  color: white;
+}
+
+.workTaskHeader {
+  flex: 1;
+  margin: 0%;
+  border-radius: 15px;
+  background-color: #a256c2;
+}
+
+.workTask {
+  margin: 10%;
+  border-radius: 15px;
+  align-self: center;
+  width: 65%;
+  cursor: pointer;
+}
+
+.nexttasktitle {
+  flex: 1;
+  margin: 0%;
+  border-radius: 15px;
+  background-color: #a256c2;
+}
+
+.nexttaskname {
+  border-bottom: 1px solid black;
+  min-width: fit-content;
+}
+
+.nexttasknamename {
+  font-size: 100%;
+  margin: 5%;
+  padding: 0%;
+}
+
+.nexttasktime {
+  min-width: fit-content;
+  padding: 5%;
+}
+
+.nexttasktimetext {
+  font-size: 100%;
+  margin: 0%;
+  padding: 0%;
+}
+
+.nexttaskbutton {
+  flex: 1;
+  margin: 0%;
+  padding: 0%;
+  border-radius: 15px;
+  background-color: #ca38ff;
+  cursor: pointer;
+}
+
+.nexttaskbuttontext {
+  font-size: 100%;
+  margin: 0%;
+  padding: 5%;
+}
+
+.title {
+  text-decoration: underline;
+  padding: 0%;
+  margin: 0%;
+  font-family: 'OpenSans', sans-serif;
+  font-style: normal;
+}
+
+.logo {
+  width: var(--logo-size);
+  height: auto;
+  max-width: var(--max-logo-width);
+  margin: 0.5%;
+}
+
+.switch {
+  cursor: pointer;
+  font-family: 'OpenSans', sans-serif;
+  font-size: 16px;
+  width: var(--button-width);
+  height: var(--button-height);
+  max-width: var(--max-button-width);
+  margin: 0.2%;
+  padding: 0;
+  border: 0px solid;
+  border-radius: 10px;
+  background-color: #80b0ff;
+  color: black;
+}
+
+a {
+  color: #69a2ba;
+}
+
+.bottomRight {
+  cursor: pointer;
+  font-family: 'OpenSans', sans-serif;
+  font-size: 16px;
+  width: 20%;
+  height: var(--button-height);
+  max-width: var(--max-button-width);
+  margin: 1%;
+  padding: 0;
+  border: 0px solid;
+  border-radius: 10px;
+  background-color: #a19afe;
+  color: #000000;
+  position: fixed;
+  bottom: 0;
+  right: 0;
+}
+
+.textinput {
+  background-color: transparent;
+  border: none;
+  border-bottom: 1px solid black;
+  width: 15%;
+  text-align: center;
+  font-family: 'OpenSans', sans-serif;
+  font-size: 100%;
+}
+
+.textinput:focus {
+  text-align: center;
+  font-family: 'OpenSans', sans-serif;
+  font-size: 100%;
+  outline: none;
+  border: none;
+  border-bottom: 1px solid black;
+}
+
+.smalltextinput {
+  background-color: transparent;
+  border: none;
+  border-bottom: 1px solid black;
+  width: 5%;
+  text-align: center;
+  font-family: 'OpenSans', sans-serif;
+  font-size: 100%;
+}
+
+.smalltextinput:focus {
+  text-align: center;
+  font-family: 'OpenSans', sans-serif;
+  font-size: 100%;
+  outline: none;
+  border: none;
+  border-bottom: 1px solid black;
+}
+
+input::-webkit-color-swatch {
+  border: none;
+}
+
+.colorinput {
+  border-radius: 100%;
+  border-color: black;
+  border: solid;
+  border-width: 2px;
+  width: 50px;
+  height: 50px;
+  background-color: black;
+  overflow: hidden;
+}
+
+.input-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50%;
+  margin: 0;
+}
+
+.input-section {
+  flex: 1;
+  width: 20%;
+  margin: 0;
+  padding: 0;
+}
+
+.timeinput {
+  background-color: transparent;
+  border: none;
+  border-bottom: 1px solid black;
+  width: 50%;
+  text-align: center;
+  font-family: 'OpenSans', sans-serif;
+  font-size: 100%;
+}
+
+.smallNumInput {
+  background-color: transparent;
+  border: none;
+  border-bottom: 1px solid black;
+  min-width: 50px;
+  max-width: 50px;
+  text-align: center;
+  font-family: 'OpenSans', sans-serif;
+  font-size: 100%;
+}
+
+.smallNumInput:focus {
+  text-align: center;
+  font-family: 'OpenSans', sans-serif;
+  font-size: 100%;
+  outline: none;
+  border: none;
+  border-bottom: 1px solid black;
+}
+
+.smallNumInput::-webkit-outer-spin-button,
+.smallNumInput::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.next {
+  cursor: pointer;
+  font-family: 'OpenSans', sans-serif;
+  font-size: 16px;
+  width: 20%;
+  height: var(--button-height);
+  max-width: var(--max-button-width);
+  margin: 0.2%;
+  padding: 0;
+  border: 0px;
+  border-radius: 10px;
+  color: #000000;
+  background-color: #b3d0ff;
+}
+
+.homeTaskDiv {
+  display: flex;
+  flex-direction: row;
+  flex: 1;
+  width: 5000%;
+  height: var(--button-height);
+  max-width: var(--max-button-width);
+  margin: 2%;
+  padding: 0;
+  border: 0px solid;
+  border-radius: 10px;
+}
+
+.homeTaskInnerDiv {
+  display: flex;
+  flex: 1;
+  width: 5000%;
+  height: var(--button-height);
+  max-width: var(--max-button-width);
+  margin: 2%;
+  padding: 0% 10%;
+  border: 0px solid;
+  border-radius: 10px;
+  justify-content: center;
+}
+
+.homeTask {
+  cursor: pointer;
+  font-family: 'OpenSans', sans-serif;
+  font-size: 20px;
+  margin: 2%;
+  display: grid;
+  color: #000000;
+  align-content: center;
+}
+
+.homeTaskColor {
+  border-radius: 100%;
+  border-color: black;
+  border: solid;
+  border-width: 2px;
+  width: 20px;
+  height: 20px;
+  background-color: black;
+  overflow: hidden;
+  align-self: center;
+}
+
+.nextLeft {
+  cursor: pointer;
+  font-family: 'OpenSans', sans-serif;
+  font-size: 16px;
+  width: 20%;
+  height: var(--button-height);
+  max-width: var(--max-button-width);
+  margin: 0.2%;
+  margin-right: 2.5%;
+  padding: 0;
+  border: 0px solid;
+  border-radius: 10px;
+  background-color: #a19afe;
+  color: #000000;
+}
+
+.nextRight {
+  cursor: pointer;
+  font-family: 'OpenSans', sans-serif;
+  font-size: 16px;
+  width: 20%;
+  height: var(--button-height);
+  max-width: var(--max-button-width);
+  margin: 0.2%;
+  margin-left: 2.5%;
+  padding: 0;
+  border: 0px solid;
+  border-radius: 10px;
+  background-color: #a19afe;
+  color: #000000;
+}
+
+.go {
+  cursor: pointer;
+  font-family: 'OpenSans', sans-serif;
+  font-size: 16px;
+  width: 20%;
+  height: var(--button-height);
+  max-width: var(--max-button-width);
+  margin: 0.2%;
+  padding: 0;
+  border: 0px solid;
+  border-radius: 10px;
+  background-color: #6e65f1;
+  color: #000000;
+}
+
+/* Media query for screens up to 768px */
+@media only screen and (max-width: 768px) {
+  :root {
+    --logo-size: 15%;
+    /* Adjusted logo size for smaller screens */
+    --button-width: 10%;
+    /* Adjusted button width for smaller screens */
+  }
+
+  .textinput {
+    width: 30%;
+    /* Adjusted text input width for smaller screens */
+  }
+
+  .next {
+    width: 40%;
+    /* Adjusted next button width for smaller screens */
+  }
+
+  .menu,
+  .rightmenu {
+    flex-direction: column;
+    align-items: flex-end;
+  }
+
+  .menuoption {
+    font-size: 22px;
+    padding: 8px 15px;
+    margin: 5px 0;
+  }
+}
+
+/* Media query for screens up to 480px */
+@media only screen and (max-width: 480px) {
+  :root {
+    --logo-size: 20%;
+    /* Further adjusted logo size for even smaller screens */
+    --button-width: 15%;
+    /* Further adjusted button width for even smaller screens */
+  }
+
+  .textinput {
+    width: 50%;
+    /* Further adjusted text input width for even smaller screens */
+  }
+
+  .next {
+    width: 60%;
+    /* Further adjusted next button width for even smaller screens */
+  }
+
+  .menu,
+  .rightmenu {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .menuoption {
+    font-size: 20px;
+    padding: 6px 12px;
+    margin: 4px 0;
+  }
+}

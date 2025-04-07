@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hash Password</title>
+</head>
+
+<body>
+  <h1>Hash Password</h1>
+  <label for="password">Enter Password:</label>
+  <input type="password" id="password" name="password">
+  <br>
+  <button onclick="hashPassword()">Hash Password</button>
+  <p id="hashedPassword"></p>
+
+  <br><br>
+
+  <label for="password">Enter Compared Password:</label>
+  <input type="password" id="comparedPassword" name="password">
+  <br>
+  <button onclick="comparePasswords()">Compare Password</button>
+  <p id="comparePassword"></p>
+
+  <script>
+    let hashedPassword="";
+    
+    async function hashPassword() {
+      const passwordInput = document.getElementById("password");
+      const hashedPasswordElement = document.getElementById("hashedPassword");
+
+      const password = passwordInput.value;
+      if (!password) {
+        hashedPasswordElement.textContent = "Please enter a password.";
+        return;
+      }
+
+      try {
+        const encoder = new TextEncoder();
+        const data = encoder.encode(password);
+        const hashBuffer = await crypto.subtle.digest('SHA-256', data);
+        const hashArray = Array.from(new Uint8Array(hashBuffer));
+        hashedPassword = hashArray.map(byte => byte.toString(16).padStart(2, '0')).join('');
+        hashedPasswordElement.textContent = "Hashed Password: " + hashedPassword;
+      } catch (error) {
+        console.error('Error hashing password:', error);
+        hashedPasswordElement.textContent = "Error hashing password.";
+      }
+    }
+
+    async function hashesPassword(password) {
+      try {
+        const encoder = new TextEncoder();
+        const data = encoder.encode(password);
+        const hashBuffer = await crypto.subtle.digest('SHA-256', data);
+        const hashArray = Array.from(new Uint8Array(hashBuffer));
+        const newHashedPassword = hashArray.map(byte => byte.toString(16).padStart(2, '0')).join('');
+        return newHashedPassword;
+      } catch (error) {
+        console.error('Error hashing password:', error);
+        hashedPasswordElement.textContent = "Error hashing password.";
+      }
+    }
+
+    async function comparePasswords() {
+      let password = document.getElementById("comparedPassword").value;
+      console.log(password);
+      let newHashedPass = await hashesPassword(password);
+      console.log(newHashedPass);
+      document.getElementById("comparePassword").textContent = (newHashedPass === hashedPassword);
+    }
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign Up</title>
+  <link href="style.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+  <div class="container">
+    <img class="logo" src="logo.png" alt="serenity" />
+    <button class="switch" onclick="redirectToLogin()">Log In</button>
+  </div>
+
+  <div class="section">
+    <center>
+      <h1 class="introtext">Make an Account</h1>
+    </center>
+
+    <center>
+      <div class="input">
+        <h3 class="inputtext" id="inputtext">Name</h3>
+        <input type="text" class="textinput" id="input" name="input" autocomplete="off">
+        <p id="errtext"></p>
+        <button id="next" class="next">Next</button>
+      </div>
+    </center>
+  </div>
+
+  <script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-app-compat.js" defer></script>
+  <script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-firestore-compat.js" defer></script>
+
+  <script src="dbinterface.js" defer></script>
+
+  <script src="signup.js" defer></script>
+</body>
+
+</html>
